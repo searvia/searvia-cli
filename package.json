@@ -1,0 +1,77 @@
+{
+  "name": "searvia",
+  "version": "0.1.0",
+  "description": "Ship iOS and Android apps from the terminal: App Store Connect and Google Play metadata, screenshots, builds, releases and an offline ASO audit. Fastlane-compatible folders, zero runtime dependencies.",
+  "type": "module",
+  "bin": {
+    "searvia": "dist/index.js"
+  },
+  "main": "dist/lib.js",
+  "types": "dist/lib.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/lib.d.ts",
+      "default": "./dist/lib.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.tr.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "SKILL.md",
+    "AGENTS.md",
+    "schema"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node scripts/postbuild.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "app store connect",
+    "app store connect api",
+    "aso",
+    "app store optimization",
+    "fastlane alternative",
+    "fastlane",
+    "google play",
+    "google play console",
+    "play developer api",
+    "ios",
+    "android",
+    "screenshots",
+    "release",
+    "cli",
+    "ci"
+  ],
+  "homepage": "https://searvia.com/cli",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/searvia/searvia-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/searvia/searvia-cli/issues"
+  },
+  "license": "MIT",
+  "author": "Searvia contributors",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.3",
+    "@types/node": "^20.19.43",
+    "typescript": "5.9.3",
+    "vitest": "^4.1.12"
+  }
+}

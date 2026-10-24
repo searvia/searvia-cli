@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+# Local credentials and state (never commit)
+.searvia/
+*.p8
+*service-account*.json

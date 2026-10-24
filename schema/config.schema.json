@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://unpkg.com/searvia/schema/config.schema.json",
+  "title": "searvia config",
+  "description": "searvia.config.json (shared) and .searvia/config.json (local, git-ignored). Environment variables override both.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "metadataPath": { "type": "string", "default": "fastlane/metadata", "description": "fastlane deliver layout: <locale>/name.txt, subtitle.txt, keywords.txt …" },
+    "screenshotsPath": { "type": "string", "default": "fastlane/screenshots", "description": "<locale>/*.png|jpg, optional <locale>/<DISPLAY_TYPE>/ subfolders." },
+    "ios": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "appId": { "type": "string", "description": "Numeric Apple ID of the app (alternative to bundleId)." },
+        "bundleId": { "type": "string" },
+        "platform": { "enum": ["IOS", "MAC_OS", "TV_OS", "VISION_OS"], "default": "IOS" },
+        "keyId": { "type": "string", "description": "App Store Connect API key id (prefer .searvia/config.json or ASC_KEY_ID)." },
+        "issuerId": { "type": "string", "description": "Issuer id of a team key; leave empty for an individual key." },
+        "privateKeyPath": { "type": "string", "description": "Path to AuthKey_XXXX.p8 (never commit it)." },
+        "countries": { "type": "array", "items": { "type": "string", "pattern": "^[A-Za-z]{2}$" }, "description": "Storefronts for the cross-locale audit." },
+        "brand": { "type": "array", "items": { "type": "string" }, "description": "Your brand words (allowed in every locale)." },
+        "avoid": { "type": "array", "items": { "type": "string" }, "description": "Other companies' brand words." },
+        "keywords": { "type": "array", "items": { "type": "string" }, "description": "Words `audit --fix` puts first in the keyword field." },
+        "usesNonExemptEncryption": { "type": "boolean", "description": "Export compliance answer for new builds." },
+        "releaseType": { "enum": ["MANUAL", "AFTER_APPROVAL", "SCHEDULED"] },
+        "earliestReleaseDate": { "type": "string", "format": "date-time" },
+        "phasedRelease": { "type": "boolean" },
+        "copyright": { "type": "string" },
+        "contentRightsDeclaration": { "enum": ["DOES_NOT_USE_THIRD_PARTY_CONTENT", "USES_THIRD_PARTY_CONTENT"] },
+        "review": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "firstName": { "type": "string" },
+            "lastName": { "type": "string" },
+            "phone": { "type": "string" },
+            "email": { "type": "string" },
+            "demoUser": { "type": "string" },
+            "demoPasswordEnv": { "type": "string", "default": "SEARVIA_DEMO_PASSWORD", "description": "Environment variable that holds the demo password." },
+            "demoRequired": { "type": "boolean" },
+            "notes": { "type": "string" }
+          }
+        },
+        "ageRating": { "type": "object", "description": "AgeRatingDeclaration attributes sent as-is, e.g. { \"gambling\": false, \"violenceCartoonOrFantasy\": \"NONE\" }." }
+      }
+    },
+    "android": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "packageName": { "type": "string" },
+        "serviceAccountPath": { "type": "string", "description": "Path to the service account JSON key (never commit it)." },
+        "track": { "type": "string", "description": "Default track (release: production, build upload: internal)." },
+        "keywords": { "type": "array", "items": { "type": "string" }, "description": "Target keywords for the Play density audit." },
+        "metadataPath": { "type": "string", "description": "Default <metadataPath>/android (fastlane supply layout)." }
+      }
+    },
+    "searvia": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "projectId": { "type": "integer" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}
