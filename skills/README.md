@@ -1,6 +1,6 @@
 # Searvia skills
 
-Ready-made ASO workflows for AI coding agents and assistants: Claude Code, Claude (desktop and web), Codex, Cursor and
+Ready-made ASO, SEO and lead generation workflows for AI coding agents and assistants: Claude Code, Claude (desktop and web), Codex, Cursor and
 any client that reads `SKILL.md` folders. Each skill tells the agent which Searvia tools to call, in which order, what
 to report and when to stop for the user's approval.
 
@@ -21,10 +21,17 @@ you can use them with or without installing anything.
 | [`apple-ads-waste`](./apple-ads-waste/SKILL.md) | Apple Ads wasted spend | Search terms and keywords spending without installs, negatives to add and organic overlap. |
 | [`ai-visibility-audit`](./ai-visibility-audit/SKILL.md) | AI visibility audit | How ChatGPT, Gemini, Perplexity and Claude answer about your brand: mention and citation rates, rivals they recommend, pages they cite and access problems. |
 | [`app-market-opportunity`](./app-market-opportunity/SKILL.md) | Find an app market opportunity | Categories and new apps that grow fast, with revenue estimates and the complaints users have about the leaders. |
+| [`local-lead-finder`](./local-lead-finder/SKILL.md) | Build a local lead list | Businesses of a type in a city (or the whole city in 9 tiles) from Google Maps without scraping, scored by their gaps, with public emails, phones, social profiles and websites. |
 
 ## Install
 
-Copy the folders you want into your agent's skills directory:
+With the [skills CLI](https://skills.sh) (Claude Code, Codex, Cursor and other Agent Skills clients):
+
+```bash
+npx skills add searvia/searvia-cli
+```
+
+Or copy the folders you want into your agent's skills directory:
 
 | Client | Location |
 |---|---|
