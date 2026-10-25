@@ -5,6 +5,12 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-25
+
+### Changed
+
+- Releases publish to npm from GitHub Actions with trusted publishing; the workflow skips versions already on npm.
+
 ### Added
 
 - `skills/`: 12 ASO workflow skills (weekly review, metadata rewrite, keyword gap, competitor teardown, review

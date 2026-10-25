@@ -1,6 +1,6 @@
 {
   "name": "searvia",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ship iOS and Android apps from the terminal: App Store Connect and Google Play metadata, screenshots, builds, releases and an offline ASO audit. Fastlane-compatible folders, zero runtime dependencies.",
   "type": "module",
   "bin": {
