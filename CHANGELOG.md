@@ -5,6 +5,13 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- `skills/`: 12 ASO workflow skills (weekly review, metadata rewrite, keyword gap, competitor teardown, review
+  replies, release check, rank drop, localization, screenshots, Apple Ads waste, AI visibility, market opportunity)
+  for Claude Code, Codex, Cursor and other `SKILL.md` clients. They call the Searvia MCP server or fall back to
+  `searvia mcp call`.
+
 ## [0.1.0] - 2026-10-24
 
 ### Added

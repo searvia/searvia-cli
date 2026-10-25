@@ -16,7 +16,7 @@ npx searvia audit            # works right now, no keys needed
 - **Your keys stay on your machine.** They are only ever sent to Apple, Google and (for the optional Searvia
   commands) Searvia.
 
-[Türkçe README](./README.tr.md) · [Changelog](./CHANGELOG.md) · [Contributing](./CONTRIBUTING.md) · [Agent skill](./SKILL.md)
+[Türkçe README](./README.tr.md) · [Changelog](./CHANGELOG.md) · [Contributing](./CONTRIBUTING.md) · [Agent skill](./SKILL.md) · [Workflow skills](./skills/README.md)
 
 ---
 
