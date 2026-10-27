@@ -48,7 +48,7 @@ npx searvia mcp call manage_leads --args '{"action": "get", "search_id": 42}' --
 ```
 
 The CLI needs `searvia login` (or `SEARVIA_API_KEY`); a free account at https://searvia.com is enough to start.
-The list is also in the panel at https://searvia.com/app/leads, with a CSV export.
+The list is also in the panel at https://searvia.com/app/growth/leads, with a CSV export.
 
 ## Rules
 
