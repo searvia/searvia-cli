@@ -8,6 +8,7 @@ import { release, status, submit } from './commands/release.js';
 import { screenshots } from './commands/screenshots.js';
 import { keywords, login, logout, mcp, popularity, projects, research, suggest } from './commands/searvia.js';
 import { workflow } from './commands/workflow.js';
+import { workspace } from './commands/workspace.js';
 import { GLOBAL_OPTIONS, parseArgs, renderOptions } from './core/args.js';
 import { loadConfig } from './core/config.js';
 import { ApiError, CliError } from './core/errors.js';
@@ -34,13 +35,14 @@ export const COMMANDS: Command[] = [
   suggest,
   popularity,
   mcp,
+  workspace,
 ];
 
 const GROUPS: Array<[string, string[]]> = [
   ['Setup', ['init', 'doctor']],
   ['Store listings', ['pull', 'push', 'audit', 'screenshots']],
   ['Builds and releases', ['build', 'release', 'status', 'submit', 'workflow']],
-  ['Searvia (free account)', ['login', 'logout', 'projects', 'keywords', 'research', 'popularity', 'suggest', 'mcp']],
+  ['Searvia (free account)', ['login', 'logout', 'projects', 'keywords', 'research', 'popularity', 'suggest', 'mcp', 'workspace']],
 ];
 
 export function mainHelp(): string {

@@ -162,17 +162,19 @@ export class SearviaClient {
     const result = (await this.post('tools/call', { name, arguments: args })) as
       | { content?: Array<{ type: string; text?: string }>; structuredContent?: unknown; isError?: boolean }
       | undefined;
-    const text = (result?.content ?? [])
-      .filter((item) => item.type === 'text')
-      .map((item) => item.text ?? '')
-      .join('\n');
+    const texts = (result?.content ?? []).filter((item) => item.type === 'text').map((item) => item.text ?? '');
+    const text = texts.join('\n');
     if (result?.isError) throw new CliError(`Searvia ${name}: ${text || 'tool error'}`);
     if (result?.structuredContent !== undefined) return result.structuredContent as T;
-    try {
-      return JSON.parse(text) as T;
-    } catch {
-      return text as T;
+    // The data is one text item; Searvia may add notes after it (e.g. "this result contains third-party text").
+    for (const item of texts) {
+      try {
+        return JSON.parse(item) as T;
+      } catch {
+        // not JSON: a note or plain text
+      }
     }
+    return text as T;
   }
 }
 

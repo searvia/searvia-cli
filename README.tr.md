@@ -60,6 +60,7 @@ ortam değişkenleri her ikisini de ezer.
 | `submit [--cancel]` | Düzenlenebilir sürümü incelemeye gönderir ya da bekleyen gönderimi geri çeker. |
 | `workflow run <dosya>` | YAML/JSON adım listesi çalıştırır (CI için). |
 | `login`, `keywords`, `research`, `popularity`, `suggest`, `projects`, `mcp` | Searvia hesabınızdan sıra takibi, popülerlik, zorluk ve yapay zekâ meta veri önerileri (MCP üzerinden). |
+| `workspace` | Bir Searvia projesi (uygulama ya da site) için Claude Code çalışma alanı: `CLAUDE.md`, `AGENTS.md` (nasıl çalışılır, değişiklikten önce onay), `client.md`, `conversions.md`, `methods.md`, `workflow.md`, `wiki.md` (sizin: bir kez yazılır, üzerine yazılmaz), `log.md` (Searvia'nın önerdiği, uyguladığı ve ölçtüğü işler), `data/` (takip edilen kelimeler, Search Console, son site denetimi), `.mcp.json` ve `.claude/skills` altında uygun beceriler. Yeniden çalıştırınca veri yenilenir. |
 
 ## ASO denetimi
 

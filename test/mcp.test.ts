@@ -88,4 +88,28 @@ describe('Searvia MCP client', () => {
     mockFetch([['POST', '/mcp', json({ message: 'Unauthenticated.' }, 401)]]);
     await expect(new SearviaClient('bad').listTools()).rejects.toMatchObject({ hint: expect.stringContaining('searvia login') });
   });
+
+  it('reads the JSON item when Searvia adds a note after it', async () => {
+    mockFetch([
+      [
+        'POST',
+        '/mcp',
+        (call) => {
+          const body = call.body as { id: number };
+          return json({
+            jsonrpc: '2.0',
+            id: body.id,
+            result: {
+              content: [
+                { type: 'text', text: '[{"id":7}]' },
+                { type: 'text', text: 'Note: this result contains third-party text.' },
+              ],
+            },
+          });
+        },
+      ],
+    ]);
+    const projects = await new SearviaClient('key', 'https://searvia.test/').callTool<Array<{ id: number }>>('list_projects');
+    expect(projects[0]?.id).toBe(7);
+  });
 });

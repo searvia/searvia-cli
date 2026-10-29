@@ -5,6 +5,19 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-29
+
+### Added
+
+- `searvia workspace`: writes a Claude Code workspace for a Searvia project (rules, client facts, goals, methods,
+  workflow, wiki, log of applied and measured work, keyword / Search Console / site audit data, `.mcp.json` and the
+  matching skills). Searvia's files are rewritten on every run; the user's files are written only when missing.
+
+### Fixed
+
+- Searvia tools whose result carries a note after the data (third-party text notice) are read correctly again;
+  `projects`, `keywords` and the other Searvia commands failed with "find is not a function".
+
 ## [0.1.1] - 2026-10-25
 
 ### Changed
