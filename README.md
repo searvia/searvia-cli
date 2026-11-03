@@ -118,6 +118,7 @@ Most store commands accept `--platform ios|android|all` (default: every configur
 | `popularity [terms]` | Popularity of given terms, or of all tracked keywords. | complete |
 | `suggest` | AI metadata variants built from your tracked keywords (uses Searvia credits). `--use 2 --yes` writes variant 2 into your local files for `audit`/`push`. | complete |
 | `mcp tools` / `mcp call <tool> --args '{…}'` | Any tool of the Searvia MCP server. | complete |
+| `connect` | Adds the Searvia MCP server to Claude Code, Codex, Gemini CLI, VS Code and Cursor on this computer. Each agent signs in through your browser, so no key is stored. `--dry-run`. | complete |
 | `workspace` | A Claude Code workspace for a Searvia project (app or website): `CLAUDE.md` and `AGENTS.md` (how to work, approval before changes), `client.md`, `conversions.md`, `methods.md`, `workflow.md`, `wiki.md` (yours: written once, never overwritten), `log.md` (what Searvia proposed, applied and measured), `data/` (tracked keywords, Search Console queries and pages, latest site audit), `.mcp.json` and the matching skills in `.claude/skills`. Run it again to refresh. `--project`, `--dir`, `--no-skills`. | complete |
 
 ### The ASO audit
@@ -241,7 +242,7 @@ resources when they become the only option.
 
 ## Searvia
 
-The optional `login`, `keywords`, `research`, `popularity`, `suggest`, `projects`, `mcp` and `workspace` commands talk to
+The optional `login`, `keywords`, `research`, `popularity`, `suggest`, `projects`, `mcp`, `connect` and `workspace` commands talk to
 [Searvia](https://searvia.com) — ASO and SEO with daily keyword rank tracking, Apple Ads popularity, review insights
 and an AI metadata writer — over its MCP server (`https://searvia.com/mcp`, JSON-RPC over HTTP). The same server works
 in Claude, ChatGPT and other MCP clients.

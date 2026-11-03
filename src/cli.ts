@@ -1,5 +1,6 @@
 import { audit } from './commands/audit.js';
 import { build } from './commands/build.js';
+import { connect } from './commands/connect.js';
 import type { Command, Context } from './commands/context.js';
 import { doctor } from './commands/doctor.js';
 import { init } from './commands/init.js';
@@ -35,6 +36,7 @@ export const COMMANDS: Command[] = [
   suggest,
   popularity,
   mcp,
+  connect,
   workspace,
 ];
 
@@ -42,7 +44,7 @@ const GROUPS: Array<[string, string[]]> = [
   ['Setup', ['init', 'doctor']],
   ['Store listings', ['pull', 'push', 'audit', 'screenshots']],
   ['Builds and releases', ['build', 'release', 'status', 'submit', 'workflow']],
-  ['Searvia (free account)', ['login', 'logout', 'projects', 'keywords', 'research', 'popularity', 'suggest', 'mcp', 'workspace']],
+  ['Searvia (free account)', ['login', 'logout', 'projects', 'keywords', 'research', 'popularity', 'suggest', 'mcp', 'connect', 'workspace']],
 ];
 
 export function mainHelp(): string {

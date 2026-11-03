@@ -5,6 +5,14 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-04
+
+### Added
+
+- `searvia connect`: finds Claude Code, Codex, Gemini CLI, VS Code and Cursor on this computer and adds the Searvia MCP
+  server to each, keeping the servers already there. Each agent signs in through the browser (OAuth), so no API key is
+  stored. `--dry-run` shows what would change.
+
 ## [0.2.0] - 2026-10-29
 
 ### Added
