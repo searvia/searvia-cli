@@ -18,13 +18,16 @@ interface Project {
   name: string;
 }
 
-/** Skills bundled with this package (skills/<name>/SKILL.md), relative to dist/commands or src/commands. */
+/** Skills bundled with this package (skills/searvia-<job>/SKILL.md), relative to dist/commands or src/commands. */
 const SKILLS_DIR = fileURLToPath(new URL('../../skills', import.meta.url));
+const SKILLS_PATH = '.claude/skills/';
 
-/** Which bundled skills fit a project: app skills for apps, the rest for websites; AI visibility fits both. */
-export function skillsFor(type: string, names: string[]): string[] {
-  const app = /^(app-|aso-|apple-ads|competitor-app)/;
-  return names.filter((name) => name === 'ai-visibility-audit' || (type === 'web' ? !app.test(name) : app.test(name)));
+/**
+ * Searvia sends its job skills with the project id filled in (same names as the bundled ones). The bundled copies are only
+ * a fallback for a server that sends none, so a workspace never ends up with two skills for the same job.
+ */
+export function needsBundledSkills(files: WorkspaceFile[]): boolean {
+  return !files.some((file) => file.path.startsWith(SKILLS_PATH));
 }
 
 /** Writes Searvia's files every time and the user's files only when they are missing. */
@@ -70,19 +73,20 @@ export const workspace: Command = {
 
     const result = await client.callTool<unknown>('manage_projects', { action: 'workspace', project_id: project.id });
     const data = isRecord(result) && isRecord(result.data) ? result.data : result;
-    const files = isRecord(data) && Array.isArray(data.files) ? (data.files as WorkspaceFile[]) : undefined;
-    if (!files) throw new CliError('Searvia did not return the workspace files.', { hint: 'Update Searvia access or try again; `searvia mcp` shows the connection.' });
+    const sent = isRecord(data) && Array.isArray(data.files) ? (data.files as WorkspaceFile[]) : undefined;
+    if (!sent) throw new CliError('Searvia did not return the workspace files.', { hint: 'Update Searvia access or try again; `searvia mcp` shows the connection.' });
+    const files = context.options.noSkills ? sent.filter((file) => !file.path.startsWith(SKILLS_PATH)) : sent;
 
     const root = resolve(context.cwd, String(context.options.dir ?? '.'));
     const { written, kept } = writeWorkspace(root, files);
+    const skills = written.filter((path) => path.startsWith(SKILLS_PATH)).map((path) => path.split('/')[2] ?? path);
 
-    const skills: string[] = [];
-    if (!context.options.noSkills && existsSync(SKILLS_DIR)) {
+    if (!context.options.noSkills && needsBundledSkills(files) && existsSync(SKILLS_DIR)) {
       const names = readdirSync(SKILLS_DIR, { withFileTypes: true })
         .filter((entry) => entry.isDirectory() && existsSync(join(SKILLS_DIR, entry.name, 'SKILL.md')))
         .map((entry) => entry.name);
-      for (const name of skillsFor(project.type, names)) {
-        const target = join(root, '.claude', 'skills', `searvia-${name}`, 'SKILL.md');
+      for (const name of names) {
+        const target = join(root, '.claude', 'skills', name, 'SKILL.md');
         mkdirSync(dirname(target), { recursive: true });
         writeFileSync(target, readFileSync(join(SKILLS_DIR, name, 'SKILL.md')));
         skills.push(name);
@@ -90,7 +94,7 @@ export const workspace: Command = {
     }
 
     context.out.log(`Workspace for ${project.name} in ${root}`);
-    context.out.log(`  written: ${written.join(', ')}`);
+    context.out.log(`  written: ${written.filter((path) => !path.startsWith(SKILLS_PATH)).join(', ')}`);
     if (kept.length) context.out.log(`  kept (yours): ${kept.join(', ')}`);
     if (skills.length) context.out.log(`  skills: ${skills.length} in .claude/skills`);
     context.out.log(context.out.paint('dim', '\nOpen the folder in Claude Code; it reads CLAUDE.md first. Fill in client.md and conversions.md if they still have blanks.'));

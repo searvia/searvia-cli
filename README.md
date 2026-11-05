@@ -247,6 +247,16 @@ The optional `login`, `keywords`, `research`, `popularity`, `suggest`, `projects
 and an AI metadata writer — over its MCP server (`https://searvia.com/mcp`, JSON-RPC over HTTP). The same server works
 in Claude, ChatGPT and other MCP clients.
 
+This repository is also a **Claude Code plugin** and a **Gemini CLI extension**: 19 job skills (weekly ASO review,
+metadata rewrite, keyword gaps, review replies, release check, AI visibility, technical SEO …) together with the
+Searvia MCP server. See [Workflow skills](./skills/README.md#install).
+
+```text
+/plugin marketplace add searvia/searvia-cli      # Claude Code
+/plugin install searvia@searvia
+gemini extensions install https://github.com/searvia/searvia-cli   # Gemini CLI
+```
+
 ## Programmatic use
 
 ```ts

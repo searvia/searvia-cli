@@ -9,23 +9,51 @@ you can use them with or without installing anything.
 
 | Skill | Workflow | What it does |
 |---|---|---|
-| [`aso-weekly-review`](./aso-weekly-review/SKILL.md) | Weekly ASO review | What moved this week for an app: rankings, competitors, store changes, reviews and the growth actions waiting for approval. |
-| [`app-metadata-rewrite`](./app-metadata-rewrite/SKILL.md) | Rewrite store metadata | New title, subtitle and keyword field (or Google Play short and full description) built from tracked keywords, popularity and competitors. |
-| [`app-keyword-gap`](./app-keyword-gap/SKILL.md) | Find keyword gaps | Keywords competitors rank for and this app does not, scored by popularity and difficulty, ready to track. |
-| [`competitor-app-teardown`](./competitor-app-teardown/SKILL.md) | Competitor app teardown | Compare one competitor app with yours: keywords, listing, ratings, complaints, ads and estimated revenue. |
-| [`app-review-replies`](./app-review-replies/SKILL.md) | Answer reviews in bulk | Group unanswered reviews by theme and draft on-brand replies for approval. |
-| [`app-release-check`](./app-release-check/SKILL.md) | Pre-release check | Before submitting a version: build, metadata, screenshots, what is new text, review info and rating risks. |
-| [`app-rank-drop`](./app-rank-drop/SKILL.md) | Investigate a ranking drop | Why one keyword fell: history, competitors on the same days, store changes, SERP volatility and notes. |
-| [`app-localization-plan`](./app-localization-plan/SKILL.md) | Localization plan | Which countries to localize next, with keyword demand per country and the metadata to write. |
-| [`app-screenshot-review`](./app-screenshot-review/SKILL.md) | Screenshot and creative review | What the first screenshots say, how competitors pitch, and a new caption set to test. |
-| [`apple-ads-waste`](./apple-ads-waste/SKILL.md) | Apple Ads wasted spend | Search terms and keywords spending without installs, negatives to add and organic overlap. |
-| [`ai-visibility-audit`](./ai-visibility-audit/SKILL.md) | AI visibility audit | How ChatGPT, Gemini, Perplexity and Claude answer about your brand: mention and citation rates, rivals they recommend, pages they cite and access problems. |
-| [`app-market-opportunity`](./app-market-opportunity/SKILL.md) | Find an app market opportunity | Categories and new apps that grow fast, with revenue estimates and the complaints users have about the leaders. |
-| [`local-lead-finder`](./local-lead-finder/SKILL.md) | Build a local lead list | Businesses of a type in a city (or the whole city in 9 tiles) from Google Maps without scraping, scored by their gaps, with public emails, phones, social profiles and websites. |
+| [`searvia-aso-weekly-review`](./searvia-aso-weekly-review/SKILL.md) | Weekly ASO review | What moved this week for an app: rankings, competitors, store changes, reviews and the growth actions waiting for approval. |
+| [`searvia-metadata-rewrite`](./searvia-metadata-rewrite/SKILL.md) | Rewrite store metadata | New title, subtitle and keyword field (or Google Play short and full description) built from tracked keywords, popularity and competitors. |
+| [`searvia-keyword-gap`](./searvia-keyword-gap/SKILL.md) | Find keyword gaps | Keywords competitors rank for and this app does not, scored by popularity and difficulty, ready to track. |
+| [`searvia-competitor-teardown`](./searvia-competitor-teardown/SKILL.md) | Competitor app teardown | Compare one competitor app with yours: keywords, listing, ratings, complaints, ads and estimated revenue. |
+| [`searvia-review-reply-batch`](./searvia-review-reply-batch/SKILL.md) | Answer reviews in bulk | Group unanswered reviews by theme and draft on-brand replies for approval. |
+| [`searvia-release-check`](./searvia-release-check/SKILL.md) | Pre-release check | Before submitting a version: build, metadata, screenshots, what is new text, review info and rating risks. |
+| [`searvia-rank-drop-investigation`](./searvia-rank-drop-investigation/SKILL.md) | Investigate a ranking drop | Why one keyword fell: history, competitors on the same days, store changes, SERP volatility and notes. |
+| [`searvia-localization-plan`](./searvia-localization-plan/SKILL.md) | Localization plan | Which countries to localize next, with keyword demand per country and the metadata to write. |
+| [`searvia-screenshot-review`](./searvia-screenshot-review/SKILL.md) | Screenshot and creative review | What the first screenshots say, how competitors pitch, and a new caption set to test. |
+| [`searvia-apple-ads-waste`](./searvia-apple-ads-waste/SKILL.md) | Apple Ads wasted spend | Search terms and keywords spending without installs, negatives to add and organic overlap. |
+| [`searvia-market-opportunity`](./searvia-market-opportunity/SKILL.md) | Find an app market opportunity | Categories and new apps that grow fast, with revenue estimates and the complaints users have about the leaders. |
+| [`searvia-ai-visibility-audit`](./searvia-ai-visibility-audit/SKILL.md) | AI visibility audit | How ChatGPT, Gemini, Perplexity and Claude answer about your brand: mention and citation rates, rivals they recommend, pages they cite and access problems. |
+| [`searvia-technical-seo-fix-plan`](./searvia-technical-seo-fix-plan/SKILL.md) | Technical SEO fix plan | Turn the latest site audit and security scan into a prioritized fix list with example URLs. |
+| [`searvia-content-refresh`](./searvia-content-refresh/SKILL.md) | Content refresh list | Pages that lost rankings or never reached the top 10, with what to change in each. |
+| [`searvia-domain-teardown`](./searvia-domain-teardown/SKILL.md) | Website competitor teardown | Analyze a domain: traffic by page type, top keywords and pages, competitors and backlinks, and what to copy. |
+| [`searvia-local-seo-review`](./searvia-local-seo-review/SKILL.md) | Local SEO review | Map rankings across the area, review health and replies, and the profile fixes that move a local business up. |
+| [`searvia-monthly-client-report`](./searvia-monthly-client-report/SKILL.md) | Monthly client report | Build a shareable report for a project: KPIs against last month, wins, issues and next month's plan. |
+| [`searvia-local-lead-list`](./searvia-local-lead-list/SKILL.md) | Build a local lead list | Businesses of a type in a city (or the whole city in 9 tiles) from Google Maps without scraping, scored by their gaps, with public emails, phones, social profiles and websites. |
+| [`searvia-social-content-plan`](./searvia-social-content-plan/SKILL.md) | Social content plan | What performed on Instagram, YouTube, TikTok or Facebook, and a four-week post plan built on it. |
+
+The names are the same everywhere: the skills the Searvia panel gives you (Settings › API & MCP), the ones
+`searvia workspace` writes into `.claude/skills` and the ones below. Copying a skill from the panel replaces the same
+skill instead of adding a second one.
 
 ## Install
 
-With the [skills CLI](https://skills.sh) (Claude Code, Codex, Cursor and other Agent Skills clients):
+**Claude Code plugin** (all skills plus the Searvia MCP server in one step; Claude Code asks you to sign in to Searvia
+the first time a tool runs):
+
+```text
+/plugin marketplace add searvia/searvia-cli
+/plugin install searvia@searvia
+```
+
+Skills then run as `/searvia:searvia-aso-weekly-review`, `/searvia:searvia-keyword-gap` and so on.
+
+**Gemini CLI extension** (skills plus the MCP server):
+
+```bash
+gemini extensions install https://github.com/searvia/searvia-cli
+```
+
+Then run `/mcp auth searvia` in Gemini CLI to sign in.
+
+**Other agents** with the [skills CLI](https://skills.sh) (Claude Code, Codex, Cursor and other Agent Skills clients):
 
 ```bash
 npx skills add searvia/searvia-cli
@@ -41,7 +69,7 @@ Or copy the folders you want into your agent's skills directory:
 
 ```bash
 git clone https://github.com/searvia/searvia-cli
-cp -r searvia-cli/skills/* ~/.claude/skills/
+cp -r searvia-cli/skills/searvia-* ~/.claude/skills/
 ```
 
 Skills ship inside the npm package as well (`node_modules/searvia/skills`).

@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { skillsFor, writeWorkspace } from '../src/commands/workspace.js';
+import { needsBundledSkills, writeWorkspace } from '../src/commands/workspace.js';
 import { tempDir } from './helpers.js';
 
 describe('searvia workspace', () => {
@@ -24,9 +24,10 @@ describe('searvia workspace', () => {
     expect(() => writeWorkspace(tempDir(), [{ path: '../evil.md', owner: 'searvia', content: 'x' }])).toThrow(/outside/);
   });
 
-  it('picks app skills for apps and the rest for websites', () => {
-    const names = ['ai-visibility-audit', 'app-rank-drop', 'aso-weekly-review', 'local-lead-finder'];
-    expect(skillsFor('app', names)).toEqual(['ai-visibility-audit', 'app-rank-drop', 'aso-weekly-review']);
-    expect(skillsFor('web', names)).toEqual(['ai-visibility-audit', 'local-lead-finder']);
+  it('uses the bundled skills only when Searvia sends none', () => {
+    const rules = { path: 'CLAUDE.md', owner: 'searvia' as const, content: 'rules' };
+    const skill = { path: '.claude/skills/searvia-keyword-gap/SKILL.md', owner: 'searvia' as const, content: 'skill' };
+    expect(needsBundledSkills([rules, skill])).toBe(false);
+    expect(needsBundledSkills([rules])).toBe(true);
   });
 });

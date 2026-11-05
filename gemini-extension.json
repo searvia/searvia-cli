@@ -1,0 +1,10 @@
+{
+  "name": "searvia",
+  "version": "0.4.0",
+  "description": "ASO and SEO workflows on the Searvia MCP server: weekly app review, store metadata rewrite, keyword gaps, review replies, release checks, AI visibility, technical SEO and more. Every change stops at a preview for your approval.",
+  "mcpServers": {
+    "searvia": {
+      "httpUrl": "https://searvia.com/mcp"
+    }
+  }
+}

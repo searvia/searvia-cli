@@ -5,6 +5,28 @@ and the project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-05
+
+### Added
+
+- Claude Code plugin and Gemini CLI extension: the repository installs as a plugin (`/plugin marketplace add
+  searvia/searvia-cli`, then `/plugin install searvia@searvia`) or an extension (`gemini extensions install
+  https://github.com/searvia/searvia-cli`) with every job skill and the Searvia MCP server.
+- Six job skills: technical SEO fix plan, content refresh list, website competitor teardown, local SEO review, monthly
+  client report and social content plan (19 in all).
+
+### Changed
+
+- Skills carry the job names the Searvia panel uses (`searvia-keyword-gap`, `searvia-rank-drop-investigation` …), so a
+  skill copied from the panel replaces the same skill instead of adding a second one. Old folder names are gone.
+- `searvia workspace` keeps the skills Searvia sends with the project id filled in and copies the bundled ones only when
+  the server sends none; `--no-skills` skips both.
+
+### Fixed
+
+- Six skills had a description that strict YAML readers reject (a `:` inside an unquoted value), so some agents did not
+  load them. Descriptions are quoted now and a test reads every skill header.
+
 ## [0.3.0] - 2026-11-04
 
 ### Added

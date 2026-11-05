@@ -1,0 +1,15 @@
+{
+  "name": "searvia",
+  "description": "Searvia plugins for Claude Code",
+  "owner": {
+    "name": "Searvia",
+    "email": "info@searvia.com"
+  },
+  "plugins": [
+    {
+      "name": "searvia",
+      "source": "./",
+      "description": "ASO and SEO workflows on the Searvia MCP server, with approval before every change."
+    }
+  ]
+}

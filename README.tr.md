@@ -81,6 +81,18 @@ ortam değişkenleri her ikisini de ezer.
 | App Store | Uygulama kaydını oluşturmak (`POST /v1/apps` yok), sözleşmeler, vergi ve banka |
 | Google Play | Uygulamayı oluşturmak; Veri güvenliği, içerik derecelendirme anketi, hedef kitle, reklam, uygulama erişimi beyanları — API yok (Play Console › Politika ve programlar › Uygulama içeriği) |
 
+## Yapay zekâ ajanları
+
+Bu depo aynı zamanda bir **Claude Code eklentisi** ve **Gemini CLI uzantısıdır**: 19 iş becerisi (haftalık ASO
+incelemesi, mağaza metni yazımı, kelime boşluğu, yorum yanıtları, sürüm öncesi kontrol, yapay zekâ görünürlüğü, teknik
+SEO …) Searvia MCP sunucusuyla birlikte gelir. Ayrıntı: [İş becerileri](./skills/README.md#install).
+
+```text
+/plugin marketplace add searvia/searvia-cli      # Claude Code
+/plugin install searvia@searvia
+gemini extensions install https://github.com/searvia/searvia-cli   # Gemini CLI
+```
+
 ## Güvenlik
 
 Anahtarlar yalnız Apple, Google ve (Searvia komutlarında) Searvia sunucularına gönderilir; telemetri yoktur. Demo

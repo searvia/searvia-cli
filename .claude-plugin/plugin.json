@@ -1,0 +1,37 @@
+{
+  "name": "searvia",
+  "displayName": "Searvia",
+  "version": "0.4.0",
+  "description": "ASO and SEO workflows on the Searvia MCP server: weekly app review, store metadata rewrite, keyword gaps, review replies, release checks, AI visibility, technical SEO and more. Every change stops at a preview for your approval.",
+  "author": {
+    "name": "Searvia",
+    "email": "info@searvia.com",
+    "url": "https://searvia.com"
+  },
+  "homepage": "https://searvia.com/cli",
+  "repository": "https://github.com/searvia/searvia-cli",
+  "license": "MIT",
+  "keywords": [
+    "aso",
+    "seo",
+    "app-store",
+    "google-play",
+    "keywords",
+    "reviews",
+    "mcp"
+  ],
+  "icon": "./.claude-plugin/icon.png",
+  "documentationUrl": "https://github.com/searvia/searvia-cli/blob/main/skills/README.md",
+  "supportUrl": "https://searvia.com/contact",
+  "privacyPolicyUrl": "https://searvia.com/privacy",
+  "termsOfServiceUrl": "https://searvia.com/terms",
+  "skills": [
+    "./"
+  ],
+  "mcpServers": {
+    "searvia": {
+      "type": "http",
+      "url": "https://searvia.com/mcp"
+    }
+  }
+}
